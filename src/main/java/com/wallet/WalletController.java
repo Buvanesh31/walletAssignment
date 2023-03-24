@@ -54,10 +54,10 @@ public class WalletController {
         return this.walletService.withdrawFundsFromWalletById(walletId,amount);
     }
 
-//    @PostMapping("wallet/fund")
-//    public Boolean fundTransfer(@RequestBody WalletTransferDto walletTransferDto) throws WalletException {
-//        return this.walletService.fundTransfer(walletTransferDto.getFromId(),walletTransferDto.getToId(),walletTransferDto.getAmount());
-//    }
+    @PatchMapping("wallet/{fromid}/transfer/{toid}/{amount}")
+    public Boolean fundTransfer(@PathVariable("fromid")Integer fromid,@PathVariable("toid")Integer toid,@PathVariable("amount")Double amount ) throws WalletException {
+       return this.walletService.fundTransfer(fromid,toid,amount);
+    }
     @GetMapping("wallets")
     public Collection<WalletDto> getAllWallets(){
         return this.walletService.getAllWallets();
